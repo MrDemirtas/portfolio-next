@@ -14,16 +14,13 @@ import { Project } from "@/lib/types";
 import { getData } from "@/lib/getData";
 import { notFound } from "next/navigation";
 
-interface ProjectPageProps {
-  params: {
-    slug: string;
-  };
-}
-
 export async function generateMetadata({
   params,
-}: ProjectPageProps): Promise<Metadata> {
-  const project: Project = await getData(`/api/projects/${params.slug}`);
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project: Project = await getData(`/api/projects/${slug}`);
 
   return {
     title: `${project.title} | Projelerim`,
@@ -31,21 +28,17 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
-  const project: Project = await getData(`/api/projects/${params.slug}`);
+export default async function ProjectPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const project: Project = await getData(`/api/projects/${slug}`);
 
   if (!project) {
     notFound();
   }
-
-  // Emoji mapping for project types
-  const projectEmoji =
-    {
-      "E-Ticaret Platformu": "🛒",
-      "Task Yönetim Uygulaması": "✅",
-      "Mobil Fitness Uygulaması": "💪",
-      "Blog Platformu": "✍️",
-    }[project.title] || "🚀";
 
   return (
     <main className="relative min-h-screen">
@@ -55,7 +48,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
         <div className="container relative z-10 px-4 py-16 text-center">
           <div className="flex items-center justify-center gap-4 mb-4">
-            <span className="text-5xl">{projectEmoji}</span>
             <h1
               className="text-4xl md:text-5xl font-bold glitch-text"
               data-text={project.title}
