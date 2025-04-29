@@ -11,7 +11,7 @@ import Link from "next/link";
 import { MarkdownContent } from "@/components/markdown-content";
 import type { Metadata } from "next";
 import { Project } from "@/lib/types";
-import { ScrollProgress } from "@/components/scroll-progress";
+import { getData } from "@/lib/getData";
 import { notFound } from "next/navigation";
 
 interface ProjectPageProps {
@@ -23,10 +23,7 @@ interface ProjectPageProps {
 export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
-  const project: Project =
-    (await fetch(
-      process.env.NEXT_PUBLIC_SITE_URL + "/api/projects/" + params.slug
-    ).then((res) => res.json())) || null;
+  const project: Project = await getData(`/api/projects/${params.slug}`);
 
   return {
     title: `${project.title} | Projelerim`,
@@ -35,9 +32,7 @@ export async function generateMetadata({
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const project: Project = await fetch(
-    process.env.NEXT_PUBLIC_SITE_URL + "/api/projects/" + params.slug
-  ).then((res) => res.json());
+  const project: Project = await getData(`/api/projects/${params.slug}`);
 
   if (!project) {
     notFound();
@@ -54,9 +49,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main className="relative min-h-screen">
-      <ScrollProgress />
-
-      {/* Header with Code Rain */}
       <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
         <CodeRain />
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm dark:bg-background/40" />

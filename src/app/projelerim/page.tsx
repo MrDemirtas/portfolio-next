@@ -4,7 +4,7 @@ import { CodeRain } from "@/components/code-rain";
 import type { Metadata } from "next";
 import { ProjectCard } from "@/components/project-card";
 import { ProjectsResponse } from "@/lib/types";
-import { ScrollProgress } from "@/components/scroll-progress";
+import { getData } from "@/lib/getData";
 
 export const metadata: Metadata = {
   title: "Projelerim | Kişisel Portfolyo",
@@ -12,14 +12,12 @@ export const metadata: Metadata = {
 };
 
 export default async function ProjectsPage() {
-  const { documents: projects }: ProjectsResponse = await fetch(
-    process.env.NEXT_PUBLIC_SITE_URL + "/api/projects"
-  ).then((res) => res.json());
+  const { documents: projects }: ProjectsResponse = await getData(
+    "/api/projects"
+  );
 
   return (
     <main className="relative min-h-screen">
-      <ScrollProgress />
-
       <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
         <CodeRain />
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm dark:bg-background/40" />

@@ -8,7 +8,6 @@ import { EducationTimeline } from "@/components/education-timeline";
 import { FloatingIcons } from "@/components/floating-icons";
 import { HeroName } from "@/components/hero-name";
 import Link from "next/link";
-import { ScrollProgress } from "@/components/scroll-progress";
 import { SkillBadge } from "@/components/skill-badge";
 import { TypewriterEffect } from "@/components/typewriter-effect";
 import { personalData } from "@/lib/data";
@@ -16,9 +15,6 @@ import { personalData } from "@/lib/data";
 export default function HomePage() {
   return (
     <main className="relative">
-      <ScrollProgress />
-
-      {/* Hero Section with Code Rain Background */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <CodeRain />
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm dark:bg-background/40" />
