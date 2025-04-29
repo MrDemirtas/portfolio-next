@@ -1,50 +1,51 @@
-import Image from "next/image"
-import Link from "next/link"
-import { notFound } from "next/navigation"
-import { ChevronLeft, Globe, Github } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
-import { projects } from "@/lib/data"
-import type { Metadata } from "next"
-import { FadeIn } from "@/components/fade-in"
-import { ScrollProgress } from "@/components/scroll-progress"
-import { ImageGallery } from "@/components/image-gallery"
-import { CodeRain } from "@/components/code-rain"
-import { MarkdownContent } from "@/components/markdown-content"
+import { Card, CardContent } from "@/components/ui/card";
+import { ChevronLeft, Github, Globe } from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { CodeRain } from "@/components/code-rain";
+import { FadeIn } from "@/components/fade-in";
+import Image from "next/image";
+import { ImageGallery } from "@/components/image-gallery";
+import Link from "next/link";
+import { MarkdownContent } from "@/components/markdown-content";
+import type { Metadata } from "next";
+import { Project } from "@/lib/types";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { notFound } from "next/navigation";
 
 interface ProjectPageProps {
   params: {
-    slug: string
-  }
+    slug: string;
+  };
 }
 
-export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  const project = projects.find((p) => p.slug === params.slug)
+export async function generateMetadata({
+  params,
+}: ProjectPageProps): Promise<Metadata> {
+  const project: Project = await fetch(
+    process.env.NEXT_PUBLIC_SITE_URL + "/api/projects/" + params.slug
+  ).then((res) => res.json());
 
   if (!project) {
     return {
       title: "Proje Bulunamadı",
-    }
+    };
   }
 
   return {
     title: `${project.title} | Projelerim`,
     description: project.shortDescription,
-  }
+  };
 }
 
-export async function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.slug,
-  }))
-}
-
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = projects.find((p) => p.slug === params.slug)
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const project: Project = await fetch(
+    process.env.NEXT_PUBLIC_SITE_URL + "/api/projects/" + params.slug
+  ).then((res) => res.json());
 
   if (!project) {
-    notFound()
+    notFound();
   }
 
   // Emoji mapping for project types
@@ -54,7 +55,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       "Task Yönetim Uygulaması": "✅",
       "Mobil Fitness Uygulaması": "💪",
       "Blog Platformu": "✍️",
-    }[project.title] || "🚀"
+    }[project.title] || "🚀";
 
   return (
     <main className="relative min-h-screen">
@@ -68,11 +69,16 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         <div className="container relative z-10 px-4 py-16 text-center">
           <div className="flex items-center justify-center gap-4 mb-4">
             <span className="text-5xl">{projectEmoji}</span>
-            <h1 className="text-4xl md:text-5xl font-bold glitch-text" data-text={project.title}>
+            <h1
+              className="text-4xl md:text-5xl font-bold glitch-text"
+              data-text={project.title}
+            >
               {project.title}
             </h1>
           </div>
-          <p className="text-xl text-muted-foreground mt-4 max-w-2xl mx-auto">{project.shortDescription}</p>
+          <p className="text-xl text-muted-foreground mt-4 max-w-2xl mx-auto">
+            {project.shortDescription}
+          </p>
         </div>
       </section>
 
@@ -135,7 +141,11 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                   </h3>
                   <div className="space-y-4">
                     {project.liveLink && (
-                      <Button variant="outline" className="w-full group" asChild>
+                      <Button
+                        variant="outline"
+                        className="w-full group"
+                        asChild
+                      >
                         <a
                           href={project.liveLink}
                           target="_blank"
@@ -143,12 +153,18 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                           className="flex items-center gap-2"
                         >
                           <Globe className="h-4 w-4 group-hover:text-primary transition-colors duration-300" />
-                          <span className="group-hover:text-primary transition-colors duration-300">Canlı Proje</span>
+                          <span className="group-hover:text-primary transition-colors duration-300">
+                            Canlı Proje
+                          </span>
                         </a>
                       </Button>
                     )}
                     {project.githubLink && (
-                      <Button variant="outline" className="w-full group" asChild>
+                      <Button
+                        variant="outline"
+                        className="w-full group"
+                        asChild
+                      >
                         <a
                           href={project.githubLink}
                           target="_blank"
@@ -156,7 +172,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                           className="flex items-center gap-2"
                         >
                           <Github className="h-4 w-4 group-hover:text-primary transition-colors duration-300" />
-                          <span className="group-hover:text-primary transition-colors duration-300">GitHub Repo</span>
+                          <span className="group-hover:text-primary transition-colors duration-300">
+                            GitHub Repo
+                          </span>
                         </a>
                       </Button>
                     )}
@@ -205,5 +223,5 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         </div>
       </section>
     </main>
-  )
+  );
 }

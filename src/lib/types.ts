@@ -19,18 +19,23 @@ export interface PersonalData {
 }
 
 export interface Project {
-  id: number;
   slug: string;
   title: string;
   shortDescription: string;
   longDescription: string;
   technologies: string[];
   image: string;
-  gallery?: string[];
+  gallery: string[];
   problemSolved: string;
   challenges: string;
-  liveLink?: string;
-  githubLink?: string;
+  liveLink: string;
+  githubLink: string;
+  $id: string;
+  $createdAt: string;
+  $updatedAt: string;
+  $permissions: string[];
+  $databaseId: string;
+  $collectionId: string;
 }
 
 export interface ProjectsResponse {

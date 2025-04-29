@@ -3,15 +3,19 @@ import { FadeIn, FadeInStagger } from "@/components/fade-in";
 import { CodeRain } from "@/components/code-rain";
 import type { Metadata } from "next";
 import { ProjectCard } from "@/components/project-card";
+import { ProjectsResponse } from "@/lib/types";
 import { ScrollProgress } from "@/components/scroll-progress";
-import { projects } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Projelerim | Kişisel Portfolyo",
   description: "Tamamladığım projeler ve çalışmalarım",
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const { total, documents: projects }: ProjectsResponse = await fetch(
+    process.env.NEXT_PUBLIC_SITE_URL + "/api/projects"
+  ).then((res) => res.json());
+
   return (
     <main className="relative min-h-screen">
       <ScrollProgress />
@@ -40,7 +44,7 @@ export default function ProjectsPage() {
           <FadeInStagger>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects?.map((project, index) => (
-                <FadeIn key={project.id} delay={index * 0.1}>
+                <FadeIn key={project.$id} delay={index * 0.1}>
                   <ProjectCard project={project} />
                 </FadeIn>
               ))}
