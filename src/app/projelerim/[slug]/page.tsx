@@ -23,15 +23,10 @@ interface ProjectPageProps {
 export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
-  const project: Project = await fetch(
-    process.env.NEXT_PUBLIC_SITE_URL + "/api/projects/" + params.slug
-  ).then((res) => res.json());
-
-  if (!project) {
-    return {
-      title: "Proje Bulunamadı",
-    };
-  }
+  const project: Project =
+    (await fetch(
+      process.env.NEXT_PUBLIC_SITE_URL + "/api/projects/" + params.slug
+    ).then((res) => res.json())) || null;
 
   return {
     title: `${project.title} | Projelerim`,

@@ -1,4 +1,4 @@
-import { ArrowRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import { FadeIn, FadeInStagger } from "@/components/fade-in";
 
 import { Button } from "@/components/ui/button";
@@ -161,7 +161,6 @@ export default function HomePage() {
             <FadeIn>
               <ContactCard
                 email={personalData.email}
-                phone={personalData.phone}
                 location={personalData.location}
               />
             </FadeIn>

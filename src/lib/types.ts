@@ -10,7 +10,6 @@ export interface PersonalData {
     years: string;
   }[];
   email: string;
-  phone: string;
   location: string;
   social: {
     github: string;

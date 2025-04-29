@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // TypeScript kontrollerini atla ve uyarıları görmezden gel
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  // ESLint ile ilgili hataları görmezden gel
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

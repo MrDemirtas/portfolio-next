@@ -1,4 +1,4 @@
-import type { PersonalData, Project } from "./types";
+import type { PersonalData } from "./types";
 
 export const personalData: PersonalData = {
   fullName: "Furkan Demirtaş",
@@ -28,10 +28,9 @@ export const personalData: PersonalData = {
     },
   ],
   email: "furkan-demirtas@outlook.com",
-  phone: "+90 555 123 4567",
-  location: "İstanbul, Türkiye",
+  location: "Tekirdağ, Türkiye",
   social: {
     github: "https://github.com/mrdemirtas",
-    linkedin: "https://linkedin.com/in/furkan-demirtas",
+    linkedin: "https://linkedin.com/in/mrdemirtas",
   },
 };

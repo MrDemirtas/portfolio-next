@@ -8,7 +8,9 @@ export async function GET(
   request: NextRequest
 ): Promise<NextResponse<Project | unknown>> {
   try {
-    const slug: string = request.nextUrl.pathname.split("/").pop() || "";
+    const slug: string = decodeURIComponent(
+      request.nextUrl.pathname.split("/").pop() || ""
+    );
 
     if (slug.trim() === "") {
       return NextResponse.json("Invalid id", { status: 500 });

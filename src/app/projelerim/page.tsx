@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ProjectsPage() {
-  const { total, documents: projects }: ProjectsResponse = await fetch(
+  const { documents: projects }: ProjectsResponse = await fetch(
     process.env.NEXT_PUBLIC_SITE_URL + "/api/projects"
   ).then((res) => res.json());
 
@@ -20,7 +20,6 @@ export default async function ProjectsPage() {
     <main className="relative min-h-screen">
       <ScrollProgress />
 
-      {/* Header with Code Rain */}
       <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
         <CodeRain />
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm dark:bg-background/40" />

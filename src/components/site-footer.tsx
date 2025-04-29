@@ -1,9 +1,10 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Github, Linkedin, Twitter } from "lucide-react"
-import { motion } from "framer-motion"
-import { personalData } from "@/lib/data"
+import { Github, Linkedin } from "lucide-react";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { personalData } from "@/lib/data";
 
 export function SiteFooter() {
   return (
@@ -22,7 +23,9 @@ export function SiteFooter() {
               {personalData.fullName}
             </h2>
             <p className="text-muted-foreground mt-2">{personalData.title}</p>
-            <p className="text-sm text-muted-foreground mt-4">{personalData.location}</p>
+            <p className="text-sm text-muted-foreground mt-4">
+              {personalData.location}
+            </p>
           </motion.div>
 
           {/* Navigasyon */}
@@ -35,7 +38,10 @@ export function SiteFooter() {
           >
             <h3 className="font-semibold mb-4">Sayfalar</h3>
             <div className="flex flex-col gap-2">
-              <Link href="/" className="text-muted-foreground hover:text-primary transition-colors duration-300">
+              <Link
+                href="/"
+                className="text-muted-foreground hover:text-primary transition-colors duration-300"
+              >
                 Ana Sayfa
               </Link>
               <Link
@@ -77,26 +83,17 @@ export function SiteFooter() {
                 <Linkedin className="h-6 w-6" />
                 <span className="sr-only">LinkedIn</span>
               </motion.a>
-              <motion.a
-                href={personalData.social.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-              >
-                <Twitter className="h-6 w-6" />
-                <span className="sr-only">Twitter</span>
-              </motion.a>
             </div>
           </motion.div>
         </div>
 
         <div className="mt-12 pt-6 border-t text-center text-sm text-muted-foreground">
           <p>
-            &copy; {new Date().getFullYear()} {personalData.fullName}. Tüm hakları saklıdır. ✨
+            &copy; {new Date().getFullYear()} {personalData.fullName}. Tüm
+            hakları saklıdır. ✨
           </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
