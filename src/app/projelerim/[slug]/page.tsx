@@ -83,8 +83,8 @@ export default async function ProjectPage({
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-            <FadeIn delay={0.3} className="lg:col-span-2">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr,300px] gap-8 mb-16">
+            <FadeIn delay={0.3}>
               <Card className="border-none shadow-xl overflow-hidden">
                 <CardContent className="p-8">
                   <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
@@ -98,68 +98,70 @@ export default async function ProjectPage({
             </FadeIn>
 
             <FadeIn delay={0.4}>
-              <Card className="border-none shadow-xl overflow-hidden h-full">
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                    <span>⚙️</span> Teknolojiler
-                  </h3>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {project.technologies.map((tech, index) => (
-                      <Badge
-                        key={index}
-                        variant="secondary"
-                        className="px-3 py-1 text-sm font-medium rounded-full bg-primary/10 hover:bg-primary/20 transition-colors duration-300"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
+              <div className="lg:sticky lg:top-20 space-y-8">
+                <Card className="border-none shadow-xl overflow-hidden">
+                  <CardContent className="p-8">
+                    <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                      <span>⚙️</span> Teknolojiler
+                    </h3>
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {project.technologies.map((tech, index) => (
+                        <Badge
+                          key={index}
+                          variant="secondary"
+                          className="px-3 py-1 text-sm font-medium rounded-full bg-primary/10 hover:bg-primary/20 transition-colors duration-300"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
 
-                  <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                    <span>🔗</span> Bağlantılar
-                  </h3>
-                  <div className="space-y-4">
-                    {project.liveLink && (
-                      <Button
-                        variant="outline"
-                        className="w-full group"
-                        asChild
-                      >
-                        <a
-                          href={project.liveLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2"
+                    <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                      <span>🔗</span> Bağlantılar
+                    </h3>
+                    <div className="space-y-3">
+                      {project.liveLink && (
+                        <Button
+                          variant="outline"
+                          className="w-full group"
+                          asChild
                         >
-                          <Globe className="h-4 w-4 group-hover:text-primary transition-colors duration-300" />
-                          <span className="group-hover:text-primary transition-colors duration-300">
-                            Canlı Proje
-                          </span>
-                        </a>
-                      </Button>
-                    )}
-                    {project.githubLink && (
-                      <Button
-                        variant="outline"
-                        className="w-full group"
-                        asChild
-                      >
-                        <a
-                          href={project.githubLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2"
+                          <a
+                            href={project.liveLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2"
+                          >
+                            <Globe className="h-4 w-4 group-hover:text-primary transition-colors duration-300" />
+                            <span className="group-hover:text-primary transition-colors duration-300">
+                              Canlı Proje
+                            </span>
+                          </a>
+                        </Button>
+                      )}
+                      {project.githubLink && (
+                        <Button
+                          variant="outline"
+                          className="w-full group"
+                          asChild
                         >
-                          <Github className="h-4 w-4 group-hover:text-primary transition-colors duration-300" />
-                          <span className="group-hover:text-primary transition-colors duration-300">
-                            GitHub Repo
-                          </span>
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
+                          <a
+                            href={project.githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2"
+                          >
+                            <Github className="h-4 w-4 group-hover:text-primary transition-colors duration-300" />
+                            <span className="group-hover:text-primary transition-colors duration-300">
+                              GitHub Repo
+                            </span>
+                          </a>
+                        </Button>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </FadeIn>
           </div>
 
