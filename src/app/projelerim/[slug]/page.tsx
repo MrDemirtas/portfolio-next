@@ -134,7 +134,7 @@ export default async function ProjectPage({
                           >
                             <Globe className="h-4 w-4 group-hover:text-primary transition-colors duration-300" />
                             <span className="group-hover:text-primary transition-colors duration-300">
-                              Canlı Proje
+                              Canlı Bağlantı
                             </span>
                           </a>
                         </Button>
@@ -153,7 +153,7 @@ export default async function ProjectPage({
                           >
                             <Github className="h-4 w-4 group-hover:text-primary transition-colors duration-300" />
                             <span className="group-hover:text-primary transition-colors duration-300">
-                              GitHub Repo
+                              GitHub Reposu
                             </span>
                           </a>
                         </Button>

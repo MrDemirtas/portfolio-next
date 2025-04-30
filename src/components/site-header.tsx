@@ -1,32 +1,33 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { motion } from "framer-motion"
-import { AnimatePresence } from "framer-motion"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { Button } from "@/components/ui/button"
-import { Mail, Menu, X } from "lucide-react"
+import { Mail, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+
+import { AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export function SiteHeader() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const pathname = usePathname()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
+      setIsScrolled(window.scrollY > 10);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { href: "/", label: "Ana Sayfa" },
     { href: "/projelerim", label: "Projelerim" },
-  ]
+  ];
 
   return (
     <header
@@ -41,7 +42,7 @@ export function SiteHeader() {
           href="/"
           className="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500"
         >
-          Portfolio
+          {"<Furkan Demirtaş />"}
         </Link>
 
         {/* Desktop Navigation */}
@@ -70,7 +71,10 @@ export function SiteHeader() {
           <ThemeToggle />
 
           <Button asChild size="sm" className="hidden md:flex rounded-full">
-            <a href="mailto:info@example.com" className="flex items-center gap-2">
+            <a
+              href="mailto:info@example.com"
+              className="flex items-center gap-2"
+            >
               <Mail className="h-4 w-4" />
               İletişime Geç
             </a>
@@ -83,7 +87,11 @@ export function SiteHeader() {
             className="md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </Button>
         </div>
       </div>
@@ -103,7 +111,9 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   className={`py-2 px-4 rounded-md ${
-                    pathname === item.href ? "bg-primary/10 text-primary" : "hover:bg-muted"
+                    pathname === item.href
+                      ? "bg-primary/10 text-primary"
+                      : "hover:bg-muted"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -111,7 +121,10 @@ export function SiteHeader() {
                 </Link>
               ))}
               <Button asChild className="mt-2 rounded-full">
-                <a href="mailto:info@example.com" className="flex items-center justify-center gap-2">
+                <a
+                  href="mailto:info@example.com"
+                  className="flex items-center justify-center gap-2"
+                >
                   <Mail className="h-4 w-4" />
                   İletişime Geç
                 </a>
@@ -121,5 +134,5 @@ export function SiteHeader() {
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }
