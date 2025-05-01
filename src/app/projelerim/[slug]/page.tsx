@@ -167,27 +167,33 @@ export default async function ProjectPage({
 
           {/* Problem ve Zorluklar Bölümleri */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-            <FadeIn delay={0.5}>
-              <Card className="border-none shadow-xl overflow-hidden">
-                <CardContent className="p-8">
-                  <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                    <span>🔍</span> Problem ve Çözüm
-                  </h2>
-                  <MarkdownContent content={project.problemSolved} />
-                </CardContent>
-              </Card>
-            </FadeIn>
+            {/* Problem ve Çözüm Bölümü */}
+            {project.problemSolved && (
+              <FadeIn delay={0.5}>
+                <Card className="border-none shadow-xl overflow-hidden">
+                  <CardContent className="p-8">
+                    <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                      <span>🔍</span> Problem ve Çözüm
+                    </h2>
+                    <MarkdownContent content={project.problemSolved} />
+                  </CardContent>
+                </Card>
+              </FadeIn>
+            )}
 
-            <FadeIn delay={0.6}>
-              <Card className="border-none shadow-xl overflow-hidden">
-                <CardContent className="p-8">
-                  <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                    <span>🧩</span> Zorluklar
-                  </h2>
-                  <MarkdownContent content={project.challenges} />
-                </CardContent>
-              </Card>
-            </FadeIn>
+            {/* Zorluklar Bölümü */}
+            {project.challenges && (
+              <FadeIn delay={0.6}>
+                <Card className="border-none shadow-xl overflow-hidden">
+                  <CardContent className="p-8">
+                    <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                      <span>🧩</span> Zorluklar
+                    </h2>
+                    <MarkdownContent content={project.challenges} />
+                  </CardContent>
+                </Card>
+              </FadeIn>
+            )}
           </div>
 
           {/* Image Gallery */}
