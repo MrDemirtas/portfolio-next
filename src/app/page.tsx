@@ -153,64 +153,12 @@ export default function HomePage() {
             <span className="text-4xl">📱</span> İletişim
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <FadeIn>
-              <ContactCard
-                email={personalData.email}
-                location={personalData.location}
-              />
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <div className="bg-card rounded-3xl p-8 shadow-xl border border-border h-full">
-                <h3 className="text-2xl font-bold mb-6">Mesaj Gönder</h3>
-                <form className="space-y-4">
-                  <div className="grid grid-cols-1 gap-4">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium mb-1"
-                      >
-                        Adınız
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium mb-1"
-                      >
-                        E-posta Adresiniz
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium mb-1"
-                      >
-                        Mesajınız
-                      </label>
-                      <textarea
-                        id="message"
-                        rows={4}
-                        className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                      ></textarea>
-                    </div>
-                  </div>
-                  <Button className="w-full">Gönder</Button>
-                </form>
-              </div>
-            </FadeIn>
-          </div>
+          <FadeIn>
+            <ContactCard
+              email={personalData.email}
+              location={personalData.location}
+            />
+          </FadeIn>
         </div>
       </section>
     </main>
