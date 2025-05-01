@@ -51,7 +51,7 @@ portfolio-next/
 1. Projeyi klonlayın:
 
 ```bash
-git clone [repo-url]
+git clone https://github.com/MrDemirtas/portfolio-next.git
 ```
 
 2. Bağımlılıkları yükleyin:
