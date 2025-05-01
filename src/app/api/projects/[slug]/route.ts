@@ -5,15 +5,15 @@ import { Query } from "node-appwrite";
 import { databases } from "@/appwrite";
 
 export async function GET(
-  request: NextRequest
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<NextResponse<Project | unknown>> {
   try {
-    const slug: string = decodeURIComponent(
-      request.nextUrl.pathname.split("/").pop() || ""
-    );
+    let { slug } = await params;
+    slug = decodeURIComponent(slug);
 
     if (slug.trim() === "") {
-      return NextResponse.json("Invalid id", { status: 500 });
+      return NextResponse.json("Invalid slug", { status: 500 });
     }
 
     const response: ProjectsResponse = await databases.listDocuments(
