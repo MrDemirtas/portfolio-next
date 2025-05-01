@@ -72,7 +72,7 @@ export function SiteHeader() {
 
           <Button asChild size="sm" className="hidden md:flex rounded-full">
             <a
-              href="mailto:info@example.com"
+              href="mailto:furkan-demirtas@outlook.com"
               className="flex items-center gap-2"
             >
               <Mail className="h-4 w-4" />
@@ -122,7 +122,7 @@ export function SiteHeader() {
               ))}
               <Button asChild className="mt-2 rounded-full">
                 <a
-                  href="mailto:info@example.com"
+                  href="mailto:furkan-demirtas@outlook.com"
                   className="flex items-center justify-center gap-2"
                 >
                   <Mail className="h-4 w-4" />
