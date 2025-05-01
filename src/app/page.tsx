@@ -78,7 +78,7 @@ export default function HomePage() {
             </a>
           </div>
 
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="absolute bottom-10 w-full flex justify-center animate-bounce">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

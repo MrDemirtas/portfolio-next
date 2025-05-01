@@ -40,9 +40,16 @@ export function SiteHeader() {
       <div className="container flex h-16 items-center justify-between">
         <Link
           href="/"
-          className="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500"
+          className="hidden md:block font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500"
         >
           {"<Furkan Demirtaş />"}
+        </Link>
+
+        <Link
+          href="/"
+          className="block md:hidden font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500"
+        >
+          {"<FD />"}
         </Link>
 
         {/* Desktop Navigation */}
