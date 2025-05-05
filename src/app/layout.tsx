@@ -11,9 +11,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Kişisel Portfolyo",
-  description: "Profesyonel portfolyo websitesi",
-  generator: "v0.dev",
+  title: "Furkan Demirtaş",
+  description: "Furkan Demirtaş'ın kişisel portfolyo websitesi"
 };
 
 export default function RootLayout({
