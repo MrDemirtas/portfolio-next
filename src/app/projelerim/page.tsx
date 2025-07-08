@@ -3,7 +3,7 @@ import { FadeIn, FadeInStagger } from "@/components/fade-in";
 import { CodeRain } from "@/components/code-rain";
 import type { Metadata } from "next";
 import { ProjectCard } from "@/components/project-card";
-import { ProjectsResponse } from "@/lib/types";
+import { ProjectsResponse } from "@/types/types";
 import { getData } from "@/lib/getData";
 
 export const metadata: Metadata = {

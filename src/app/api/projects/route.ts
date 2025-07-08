@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { ProjectsResponse } from "@/lib/types";
+import { ProjectsResponse } from "@/types/types";
 import { databases } from "@/appwrite";
 
 export async function GET(): Promise<NextResponse<ProjectsResponse | unknown>> {

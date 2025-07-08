@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Project, ProjectsResponse } from "@/lib/types";
+import { Project, ProjectsResponse } from "@/types/types";
 
 import { Query } from "node-appwrite";
 import { databases } from "@/appwrite";

@@ -10,7 +10,7 @@ import { ImageGallery } from "@/components/image-gallery";
 import Link from "next/link";
 import { MarkdownContent } from "@/components/markdown-content";
 import type { Metadata } from "next";
-import { Project } from "@/lib/types";
+import { Project } from "@/types/types";
 import { getData } from "@/lib/getData";
 import { notFound } from "next/navigation";
 
